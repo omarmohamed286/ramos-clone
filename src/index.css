@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --default-font-family: "Poppins", sans-serif;
+  --font-poppins: "Poppins", sans-serif;
+  --font-outfit: "Outfit", sans-serif;
+  --font-urbanist: "Urbanist", sans-serif;
+  --color-primary: #fe4a22;
+  --color-dark-grey: #1a1a1a;
+  --color-light-grey: #252525;
+  --color-grey: #cccccc;
+  --color-light-white: #f9f9f9;
+  --color-yellow: #ffd026;
+  --color-very-light-grey: #e6e6e6;
+  --color-light-black: #131313;
+  --color-black-300: #131111;
+  --color-light-green: #48c884;
+  --color-grey-200: #f2f2f2;
+  --background-image-bars: url(src/assets/ipad.svg);
+}
+
+@layer components {
+  .horizontal-line {
+    @apply bg-white h-1 rounded;
+  }
+}
