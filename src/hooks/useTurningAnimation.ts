@@ -113,7 +113,6 @@ const useTurningAnimation = () => {
         start: "20% bottom",
       },
     });
-    ["feature1", "feature2", ""];
     const tl1 = gsap.timeline({
       paused: true,
       onStart: () => {

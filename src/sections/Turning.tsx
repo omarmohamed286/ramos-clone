@@ -1,6 +1,5 @@
-import { SplitText } from "../components";
+import { SplitText, TurningNumberFlow } from "../components";
 import { useTurningAnimation } from "../hooks";
-import NumberFlow from "@number-flow/react";
 
 const IpadMidSvg = () => (
   <svg
@@ -180,16 +179,25 @@ const IpadMidSvg = () => (
 );
 
 const Turning = () => {
-  const {
-    feature1Number,
-    setIsFeatureHovering,
-    setCurrentFeature
-  } = useTurningAnimation();
+  const { feature1Number, setIsFeatureHovering, setCurrentFeature } =
+    useTurningAnimation();
+
+  const handleOnMouseEnter = (
+    feature: "feature1" | "feature2" | "feature3"
+  ) => {
+    setIsFeatureHovering(true);
+    setCurrentFeature(feature);
+  };
+
+  const handleOnMouseLeave = () => {
+    setIsFeatureHovering(false);
+  };
+
   return (
     <section className="mt-100 overflow-x-clip" id="turning-section">
       <div className="flex">
         <div>
-          <p className="text-6xl text-dark-grey max-w-[20ch] ml-10">
+          <p className="turning-p">
             <SplitText
               text="Turning data into real actions and ideas"
               spansClassName="turning-p-word"
@@ -197,21 +205,27 @@ const Turning = () => {
               to="words"
             ></SplitText>
           </p>
-          <div className="relative">
+          <div className="turning-mobile-ipad ipad">
+            <img src="src/assets/ipad-top.png" alt="Ipad Top" />
+            <div>
+              <IpadMidSvg></IpadMidSvg>
+            </div>
+            <img
+              src="src/assets/ipad-down.svg"
+              alt="Ipad Down"
+              className="mt-8"
+            />
+          </div>
+          <div className="relative max-md:h-120">
             <div
-              className="w-1/2 h-25 ml-30 mt-20 shadow-xl rounded-4xl px-10 py-5 absolute feature1 bg-white overflow-clip"
-              onMouseEnter={() => {
-                setIsFeatureHovering(true);
-                setCurrentFeature("feature1")
-              }}
-              onMouseLeave={() => {
-                setIsFeatureHovering(false);
-              }}
+              className="turning-feature feature1"
+              onMouseEnter={() => handleOnMouseEnter("feature1")}
+              onMouseLeave={handleOnMouseLeave}
             >
-              <div className="flex justify-between items-center">
-                <p className="text-2xl font-light font-outfit">A/B Testing</p>
-                <div className="w-15 h-15 bg-grey-200 rounded-full grid place-content-center">
-                  <i className="fa-solid fa-plus text-dark-grey plus-icon1"></i>
+              <div className="flex-between-center">
+                <p className="turning-feature-title">A/B Testing</p>
+                <div className="turning-feature-icon">
+                  <i className="fa-solid fa-plus plus-icon1"></i>
                 </div>
               </div>
               <p className="mt-10">Improve marketing strategies</p>
@@ -219,34 +233,17 @@ const Turning = () => {
                 Test different campaigns to find the most effective approach
               </p>
               <p className="mt-10">Sales Trend</p>
-              <NumberFlow
-                value={feature1Number}
-                format={{
-                  style: "currency",
-                  currency: "USD",
-                  maximumFractionDigits: 0,
-                }}
-                transformTiming={{ duration: 400, easing: "ease-out" }}
-                spinTiming={{ duration: 2000, easing: "ease-out" }}
-                opacityTiming={{ duration: 350, easing: "ease-out" }}
-              ></NumberFlow>
+              <TurningNumberFlow value={feature1Number}></TurningNumberFlow>
             </div>
             <div
-              className="w-1/2 h-25 ml-30 mt-5 shadow-xl rounded-4xl px-10 py-5 absolute top-45 feature2 bg-white overflow-clip"
-              onMouseEnter={() => {
-                setIsFeatureHovering(true);
-                setCurrentFeature("feature2")
-              }}
-              onMouseLeave={() => {
-                setIsFeatureHovering(false);
-              }}
+              className="turning-feature top-30 feature2"
+              onMouseEnter={() => handleOnMouseEnter("feature2")}
+              onMouseLeave={handleOnMouseLeave}
             >
-              <div className="flex justify-between items-center">
-                <p className="text-2xl font-light font-outfit">
-                  Trend Analysis
-                </p>
-                <div className="w-15 h-15 bg-grey-200 rounded-full grid place-content-center">
-                  <i className="fa-solid fa-plus text-dark-grey plus-icon2"></i>
+              <div className="flex-between-center">
+                <p className="turning-feature-title">Trend Analysis</p>
+                <div className="turning-feature-icon">
+                  <i className="fa-solid fa-plus plus-icon2"></i>
                 </div>
               </div>
               <p className="mt-10">Stay ahead of the competetion</p>
@@ -256,21 +253,14 @@ const Turning = () => {
               </p>
             </div>
             <div
-              className="w-1/2 h-25 ml-30 mt-5 shadow-xl rounded-4xl px-10 py-5 absolute top-75 feature3 bg-white overflow-clip"
-              onMouseEnter={() => {
-                setIsFeatureHovering(true);
-                setCurrentFeature("feature3")
-              }}
-              onMouseLeave={() => {
-                setIsFeatureHovering(false);
-              }}
+              className="turning-feature top-60 feature3"
+              onMouseEnter={() => handleOnMouseEnter("feature3")}
+              onMouseLeave={handleOnMouseLeave}
             >
-              <div className="flex justify-between items-center">
-                <p className="text-2xl font-light font-outfit">
-                  User Segmentation
-                </p>
-                <div className="w-15 h-15 bg-grey-200 rounded-full grid place-content-center">
-                  <i className="fa-solid fa-plus text-dark-grey plus-icon3"></i>
+              <div className="flex-between-center">
+                <p className="turning-feature-title">User Segmentation</p>
+                <div className="turning-feature-icon">
+                  <i className="fa-solid fa-plus plus-icon3"></i>
                 </div>
               </div>
               <p className="mt-10">Personalize customer experiences</p>
@@ -281,7 +271,7 @@ const Turning = () => {
             </div>
           </div>
         </div>
-        <div className="bg-bars h-[800px] w-[1200px] bg-contain bg-no-repeat ml-auto pt-8.5 px-12 -mr-100 mt-30 ipad">
+        <div className="turning-desktop-ipad ipad">
           <img src="src/assets/ipad-top.png" alt="Ipad Top" />
           <div className="mt-5">
             <IpadMidSvg></IpadMidSvg>
@@ -293,7 +283,7 @@ const Turning = () => {
           />
         </div>
       </div>
-      <p className="text-primary text-[25rem] font-medium text-center leading-0 mt-20">Ramos</p>
+      <p className="turning-ramos-text">Ramos</p>
     </section>
   );
 };

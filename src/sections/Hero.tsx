@@ -9,35 +9,34 @@ const Hero = ({ isInitialAnimationDone }: Props) => {
   useHeroAnimation(isInitialAnimationDone);
   return (
     <section
-      className="mt-20 pl-20 text-9xl grid place-content-center font-outfit text-dark-grey space-y-5 relative invisible overflow-clip"
+      className="mt-20 text-[clamp(1.5rem,8vw,8rem)] leading-none grid place-content-center font-outfit text-dark-grey space-y-5 relative invisible overflow-clip"
       id="hero-section"
     >
-      <div className="flex gap-5 justify-center">
+      <div className="flex gap-5 justify-center max-lg:flex-col-reverse">
         <div>
           <div className="flex overflow-hidden">
-            <p className="ml-auto analytics">Analytics</p>
+            <p className="ml-auto max-lg:mx-auto analytics">Analytics</p>
           </div>
-          <p className="mr-20 overflow-hidden space-x-10 second-p whitespace-nowrap">
-            <span className="inline-block that">that</span>
-            <span className="text-grey inline-block helps">helps</span>
-            <span className="inline-block you">you</span>
+          <p className="hero-text mr-20 second-p">
+            <span className="that">that</span>
+            <span className="text-grey helps">helps</span>
+            <span className="you">you</span>
           </p>
         </div>
-        <div className="max-w-md w-full aspect-video">
+        <div className="hero-video">
           <video
             src="src/assets/ramos-promo-half.mp4"
             loop
             muted
             playsInline
             autoPlay
-            className="rounded-4xl "
             id="hero-video"
           ></video>
         </div>
       </div>
-      <p className="ml-10 overflow-hidden space-x-10 third-p mx-auto">
-        <span className="inline-block shape">shape</span>
-        <span className="inline-block the">the</span>
+      <p className="hero-text ml-10 third-p -mt-5">
+        <span className="shape">shape</span>
+        <span className="the">the</span>
         <span className="whitespace-nowrap">
           <SplitText
             text="future"

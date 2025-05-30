@@ -80,7 +80,7 @@ const AnalyticsServiceButton = () => {
   return (
     <button
       ref={buttonRef}
-      className="group inline-flex w-fit max-w-140 flex-none items-center bg-yellow rounded-[5rem] text-light-black cursor-pointer font-medium gap-1.5 justify-center py-10 overflow-hidden relative hover:text-white"
+      className="group inline-flex w-fit max-w-140 max-md:w-[80vw] flex-none items-center bg-yellow rounded-[5rem] max-md:rounded-[3rem] text-light-black cursor-pointer font-medium gap-1.5 justify-center py-10 overflow-hidden relative hover:text-white"
     >
       <span
         ref={flairRef}
@@ -95,7 +95,7 @@ const AnalyticsServiceButton = () => {
           className="flex whitespace-nowrap gap-12 analytics-button-label"
         >
           {Array.from({ length: 9 }).map((_, i) => (
-            <span key={i} className="text-9xl">
+            <span key={i} className="text-9xl max-md:text-5xl">
               analytics service
             </span>
           ))}

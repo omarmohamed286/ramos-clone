@@ -19,15 +19,18 @@ const useReportsAnimation = () => {
         scrub: true,
       },
     });
-    gsap.from(".right-container", {
-      rotate: 45,
-      transformOrigin: "left 100%",
-      scrollTrigger: containersScrollTrigger,
-    });
-    gsap.from(".left-container", {
-      rotate: -45,
-      transformOrigin: "right 100%",
-      scrollTrigger: containersScrollTrigger,
+    const mm = gsap.matchMedia();
+    mm.add("(min-width: 1024px)", () => {
+      gsap.from(".right-container", {
+        rotate: 45,
+        transformOrigin: "left 100%",
+        scrollTrigger: containersScrollTrigger,
+      });
+      gsap.from(".left-container", {
+        rotate: -45,
+        transformOrigin: "right 100%",
+        scrollTrigger: containersScrollTrigger,
+      });
     });
     gsap.from(".reports-paragraph-word", {
       opacity: 0,

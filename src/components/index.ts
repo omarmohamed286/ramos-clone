@@ -3,6 +3,7 @@ import InitialAnimation from "./InitialAnimation";
 import AnalyticsServiceButton from "./AnalyticsServiceButton";
 import DirectionAwareHoverButton from "./DirectionAwareHoverButton";
 import SplitText from "./SplitText";
+import TurningNumberFlow from "./TurningNumberFlow";
 
 export {
   SignupButton,
@@ -10,4 +11,5 @@ export {
   AnalyticsServiceButton,
   DirectionAwareHoverButton,
   SplitText,
+  TurningNumberFlow,
 };
